@@ -7,6 +7,7 @@ import { ApolloServer } from 'apollo-server';
 import UserResolver from '@modules/users/infra/graphql/resolvers/UserResolver';
 
 import '@shared/infra/typeorm';
+import '@shared/container';
 
 async function startServer() {
   const schema = await buildSchema({
