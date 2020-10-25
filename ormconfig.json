@@ -8,6 +8,8 @@
   "password": "docker",
   "database": "blog",
 
+  "synchronize": true,
+
   "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
   "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
 

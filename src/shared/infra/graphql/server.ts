@@ -1,14 +1,18 @@
 /* eslint-disable no-console */
 import 'reflect-metadata';
+
 import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server';
 
-import '../typeorm/connection';
-
 import UserResolver from '@modules/users/infra/graphql/resolvers/UserResolver';
 
+import '@shared/infra/typeorm';
+
 async function startServer() {
-  const schema = await buildSchema({ resolvers: [UserResolver] });
+  const schema = await buildSchema({
+    resolvers: [UserResolver],
+    validate: false,
+  });
 
   const server = new ApolloServer({ schema });
 
