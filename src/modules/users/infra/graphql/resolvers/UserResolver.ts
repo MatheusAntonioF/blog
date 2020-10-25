@@ -3,16 +3,21 @@ import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import { container } from 'tsyringe';
 
 import ICreateUser from '@modules/users/dtos/ICreateUser';
-import CreateUserService from '@modules/users/services/CreateUserService';
+import CreateUserService from '@modules/users/services/CreateUsersService';
 import ShowUserService from '@modules/users/services/ShowUserService';
+import ListUsersService from '@modules/users/services/ListUsersService';
 
 import User from '../../typeorm/entities/User';
 
 @Resolver()
 class UserResolver {
-  @Query(() => String)
-  hello(): string {
-    return 'Hello World';
+  @Query(() => [User])
+  async listUsers(): Promise<User[]> {
+    const listUsersService = container.resolve(ListUsersService);
+
+    const allUsers = await listUsersService.execute();
+
+    return allUsers;
   }
 
   @Query(() => User)
