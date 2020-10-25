@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/*"
+    ]
+  },
   "scripts": {
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "dev": "nodemon -w src --ext ts --exec ts-node src/shared/infra/graphql/server.ts"
