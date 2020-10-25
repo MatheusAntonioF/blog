@@ -1,5 +1,4 @@
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
-
 import { container } from 'tsyringe';
 
 import ICreateUser from '@modules/users/dtos/ICreateUser';
