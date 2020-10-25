@@ -8,11 +8,11 @@ import {
 
 import { ObjectType, Field, ID } from 'type-graphql';
 
-@Entity()
+@Entity({ name: 'users' })
 @ObjectType()
 class User {
   @Field(() => ID)
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'id', type: 'uuid' })
   id: string;
 
   @Field(() => String)
